@@ -1,52 +1,80 @@
 {% load static %}
-<!-- Bootstrap navbar with icon and brand name -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container-fluid">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <div class="container">
     <a class="navbar-brand" id="navbar-text" href="{% url 'home' %}">
-      <img src="{% static 'todo/logo.png' %}" alt="" width="25" height="25" class="d-inline-block align-text-top" />
+      <img src="{% static 'todo/clipboard.png' %}" alt="" width="25" height="25"
+        class="d-inline-block align-text-top" />
       Todowoo</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+    {% if user.is_authenticated %}
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-        {% if user.is_authenticated %}
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-            aria-expanded="false">
-            Hello {{ user.username }}
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li>
+      <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'home' %}"><i class="bi bi-house-door-fill"></i>
+            Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="{% url 'createtodo' %}"><i
+              class="bi bi-file-earmark-plus-fill"></i> Create </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="{% url 'currenttodos' %}"><i class="bi bi-file-text-fill"></i>
+            Current</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="{% url 'completedtodos' %}"><i
+              class="bi bi-file-earmark-check-fill"></i> Completed</a>
+        </li>
+      </ul>
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#logoutModal">
+        Logout
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="logoutModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="logoutModalLabel">Are you sure you want to logout?</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              Please be sure that all your work is saved before logging out.
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
               <form action="{% url 'logoutuser' %}" method="POST">
                 {% csrf_token %}
-                <button class="btn" type="submit">Logout</button>
+                <button class="btn btn-danger" type="submit">Logout</button>
               </form>
-            </li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="{% url 'home' %}" id="navbar-text">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="{% url 'createtodo' %}" id="navbar-text">Create Todo</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="{% url 'currenttodos' %}" id="navbar-text">Current Todos</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="{% url 'completedtodos' %}" id="navbar-text">Completed Todos</a>
-        </li>
-        {% else %}
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="{% url 'signupuser' %}" id="navbar-text">Signup</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="{% url 'loginuser' %}" id="navbar-text">Login</a>
-        </li>
-        {% endif %}
-      </ul>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
+    {% else %}
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="#">Features</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="#">About Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="#">FAQ</a>
+        </li>
+      </ul>
+      <a class="btn btn-outline-light me-2" href="{% url 'loginuser' %}">Login</a>
+      <a class="btn btn-warning" href="{% url 'signupuser' %}">Sign-Up</a>
+    </div>
+    {% endif %}
 </nav>
