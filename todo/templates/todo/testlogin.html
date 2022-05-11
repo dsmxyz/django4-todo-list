@@ -2,31 +2,23 @@
 {% load static %}
 
 {% block content %}
-<div class="row justify-content-center mt-5">
-    <div class="col-md-10">
-        <div class="table-responsive-md">
-            <table class="table table-secondary table-striped table-hover caption-top">
-                <caption><h2>Completed Tasks</h2></caption>
-                <thead>
-                    <tr>
-                        <th scope="col">Completed</th>
-                        <th scope="col">Important</th>
-                        <th scope="col">Title</th>
-                        <th scope="col">Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for todo in todos %}
-                    <tr>
-                        <th scope="row">{{ todo.datecompleted }}</th>
-                        <td class="align-middle">{% if todo.important %}<span class="badge rounded-pill bg-danger">High Priority</span>{% else %}<span class="badge rounded-pill bg-secondary">Low Priority</span>{% endif %}</td>
-                        <td><a href="{% url 'viewtodo' todo.id %}">{{ todo.title }}</a></td>
-                        <td>{{ todo.description|truncatewords:15 }}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+{% if user.is_authenticated %}
+<div class="px-4 py-5 my-5 text-center">
+    <img class="d-block mx-auto mb-4" src="{% static 'todo/logo.png' %}" width="55" height="55">
+    <h1 class="display-5 fw-bold">Busy Works</h1>
+    <div class="col-md-6 mx-auto">
+        <p class="lead md-4">
+            “Productivity is being able to do things that you were never able to do before.”
+            Here at Busy Works, we understand this and strive to help our user accomplish their to
+            full potential. Through some exploration of our website, you can see what we have to
+            offer.
+        </p>
+        <div class="d-grid d-md-flex justify-content-md-center">
+            <button type="button" class="btn btn-primary btn-lg">Learn more</button>
         </div>
-    </div> 
+    </div>
 </div>
+{% else %}
+<h1>Hello {{ user }}</h1>
+{% endif %}
 {% endblock %}}

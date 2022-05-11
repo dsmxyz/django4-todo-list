@@ -1,5 +1,24 @@
-{% extends 'todo/base.html' %}
+{% extends "todo/base.html" %}
+{% load static %}
 
 {% block content %}
-<h1>Home</h1>
-{% endblock %}
+{% if user.is_authenticated %}
+<h1>Hello {{ user }}</h1>
+{% else %}
+<div class="px-4 py-5 my-5 text-center">
+    <img class="d-block mx-auto mb-4" src="{% static 'todo/logo.png' %}" width="55" height="55">
+    <h1 class="display-5 fw-bold">Busy Works</h1>
+    <div class="col-md-6 mx-auto">
+        <p class="lead md-4">
+            “Productivity is being able to do things that you were never able to do before.”
+            Here at Busy Works, we understand this and strive to help our user accomplish their to
+            full potential. Through some exploration of our website, you can see what we have to
+            offer.
+        </p>
+        <div class="d-grid d-md-flex justify-content-md-center">
+            <button type="button" class="btn btn-primary btn-lg">Learn more</button>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}}
