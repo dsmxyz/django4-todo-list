@@ -19,7 +19,7 @@
                     {% for todo in todos %}
                     <tr>
                         <th scope="row">{{ todo.created }}</th>
-                        <td class="align-middle">{% if todo.important %}<span class="badge rounded-pill bg-danger">High Priority</span>{% else%}<span class="badge rounded-pill bg-secondary">Low Priority</span>{% endif %}</td>
+                        <td class="align-middle">{% if todo.important %}<span class="badge rounded-pill bg-danger">High Priority</span>{% else %}<span class="badge rounded-pill bg-secondary">Low Priority</span>{% endif %}</td>
                         <td><a href="{% url 'viewtodo' todo.id %}">{{ todo.title }}</a></td>
                         <td>{{ todo.description|truncatewords:15 }}</td>
                     </tr>
