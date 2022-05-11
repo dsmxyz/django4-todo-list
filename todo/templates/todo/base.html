@@ -13,12 +13,16 @@
     <!-- Browser tab icon-->
     <link rel="icon" type="image/png"  href="{% static 'todo/clipboard.png' %}">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet"> 
+
     <!-- Browser tab title -->
     <title>Base.html</title>
   </head>
   <body>
     {% include 'todo/navbar.html' %}
-    <div class="container-md">
+    <div class="container-md" style="font-family: 'Secular One', sans-serif; font-weight: 100;">
         {% block content %}
         {% endblock %}
     </div>

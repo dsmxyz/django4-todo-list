@@ -2,8 +2,8 @@
 {% load static %}
 
 {% block content %}
-<div class="row justify-content-center mt-5">
-    <div class="col-md-10">
+<div class="row justify-content-md-center mt-5">
+    <div class="col-md">
         <div class="table-responsive-md">
             <table class="table table-secondary table-striped table-hover caption-top">
                 <caption><h2>Current Tasks</h2></caption>
@@ -13,6 +13,7 @@
                         <th scope="col">Important</th>
                         <th scope="col">Title</th>
                         <th scope="col">Description</th>
+                        <th scope="col">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -21,7 +22,14 @@
                         <th scope="row">{{ todo.created }}</th>
                         <td class="align-middle">{% if todo.important %}<span class="badge rounded-pill bg-danger">High Priority</span>{% else %}<span class="badge rounded-pill bg-secondary">Low Priority</span>{% endif %}</td>
                         <td><a href="{% url 'viewtodo' todo.id %}">{{ todo.title }}</a></td>
-                        <td>{{ todo.description|truncatewords:15 }}</td>
+                        <td>{{ todo.description|truncatewords:10 }}</td>
+                        <td class="align-middle">
+                            <div class="btn-group" role="group">
+                            <button class="btn btn-warning" type="button"><i class="bi bi-pencil-square"></i></button>
+                            <button class="btn btn-secondary" type="button"><i class="bi bi-eye"></i></button>
+                            <button class="btn btn-danger" type="button"><i class="bi bi-x-square"></i></button>
+                        </div>
+                        </td>
                     </tr>
                     {% endfor %}
                 </tbody>
