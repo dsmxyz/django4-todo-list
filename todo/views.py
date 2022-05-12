@@ -100,3 +100,6 @@ def completedtodos(request):
 
 def testing(request):
     return render(request, 'todo/testlogin.html')
+
+def features(request):
+    return render(request, 'todo/features.html')

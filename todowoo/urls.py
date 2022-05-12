@@ -33,6 +33,7 @@ urlpatterns = [
     path('completed/', views.completedtodos, name="completedtodos"),
     path('todo/<int:todo_pk>/complete', views.completetodo, name="completetodo"),
     path('todo/<int:todo_pk>/delete', views.deletetodo, name="deletetodo"),
-    path('testing/', views.testing, name="testing")
+    path('testing/', views.testing, name="testing"),
+    path('features/', views.features, name="features"),
 
 ]
