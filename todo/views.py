@@ -91,7 +91,7 @@ def deletetodo(request, todo_pk):
     todo = get_object_or_404(Todo, pk=todo_pk, user=request.user)
     if request.method == 'POST':
         todo.delete()
-        return redirect('curenttodos')
+        return redirect('currenttodos')
 
 @login_required
 def completedtodos(request):

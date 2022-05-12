@@ -15,14 +15,14 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;500;600;700;800&display=swap" rel="stylesheet"> 
 
     <!-- Browser tab title -->
-    <title>Base.html</title>
+    <title>{% block title %}Base.html{% endblock %}</title>
   </head>
   <body>
     {% include 'todo/navbar.html' %}
-    <div class="container-md" style="font-family: 'Secular One', sans-serif; font-weight: 100;">
+    <div class="container-md" style="font-family: 'Inconsolata', sans-serif; font-weight: 400;">
         {% block content %}
         {% endblock %}
     </div>

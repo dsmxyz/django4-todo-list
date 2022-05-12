@@ -1,8 +1,17 @@
 {% extends "todo/base.html" %}
 {% load static %}
 
+{% block title %}Current Tasks{% endblock %}
+
 {% block content %}
-<div class="row justify-content-md-center mt-5">
+<nav class="mt-2" style="--bs-breadcrumb-divider: '>'; font-weight: 800;" aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'home' %}"><span class="badge rounded-pill bg-dark">Home</span></a></li>
+    <li class="breadcrumb-item active"><span class="badge rounded-pill bg-primary">Current</span></li>
+  </ol>
+</nav>
+
+<div class="row justify-content-md-center mt-3">
     <div class="col-md">
         <div class="table-responsive-md">
             <table class="table table-secondary table-striped table-hover caption-top">
@@ -18,17 +27,17 @@
                 </thead>
                 <tbody>
                     {% for todo in todos %}
-                    <tr>
+                    <tr class="align-middle">
                         <th scope="row">{{ todo.created }}</th>
-                        <td class="align-middle">{% if todo.important %}<span class="badge rounded-pill bg-danger">High Priority</span>{% else %}<span class="badge rounded-pill bg-secondary">Low Priority</span>{% endif %}</td>
-                        <td><a href="{% url 'viewtodo' todo.id %}">{{ todo.title }}</a></td>
+                        <td>{% if todo.important %}<span class="badge rounded-pill bg-danger">High Priority</span>{% else %}<span class="badge rounded-pill bg-secondary">Low Priority</span>{% endif %}</td>
+                        <td>{{ todo.title }}</td>
                         <td>{{ todo.description|truncatewords:10 }}</td>
-                        <td class="align-middle">
+                        <td>
                             <div class="btn-group" role="group">
-                            <button class="btn btn-warning" type="button"><i class="bi bi-pencil-square"></i></button>
-                            <button class="btn btn-secondary" type="button"><i class="bi bi-eye"></i></button>
+                            <button class="btn btn-success" type="button"><i class="bi bi-check"></i></button>
+                            <a href="{% url 'viewtodo' todo.id %}" class="btn btn-secondary" type="button"><i class="bi bi-eye"></i></a>
                             <button class="btn btn-danger" type="button"><i class="bi bi-x-square"></i></button>
-                        </div>
+                            </div>
                         </td>
                     </tr>
                     {% endfor %}
