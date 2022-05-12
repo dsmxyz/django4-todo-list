@@ -4,6 +4,7 @@
 {% block title %}View Task{% endblock %}
 
 {% block content %}
+{% if todo.datecompleted is None %}
 <nav class="mt-2" style="--bs-breadcrumb-divider: '>'; font-weight: 800;" aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="{% url 'home' %}"><span class="badge rounded-pill bg-dark">Home</span></a></li>
@@ -11,6 +12,17 @@
       <li class="breadcrumb-item active" ><span class="badge rounded-pill bg-primary">View</span></li>
     </ol>
 </nav>
+{% else %}
+<nav class="mt-2" style="--bs-breadcrumb-divider: '>'; font-weight: 800;" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'home' %}"><span class="badge rounded-pill bg-dark">Home</span></a></li>
+      <li class="breadcrumb-item"><a href="{% url 'createtodo' %}"><span class="badge rounded-pill bg-dark">Create</span></a></li>
+      <li class="breadcrumb-item"><a href="{% url 'currenttodos' %}"><span class="badge rounded-pill bg-dark">Current</span></a></li>
+      <li class="breadcrumb-item"><a href="{% url 'completedtodos' %}"><span class="badge rounded-pill bg-dark">Completed</span></a></li>
+      <li class="breadcrumb-item active" ><span class="badge rounded-pill bg-primary">View</span></li>
+    </ol>
+</nav>
+{% endif %}
 
 <div class="row justify-content-center mt-3">
     <div class="col-md-5">
