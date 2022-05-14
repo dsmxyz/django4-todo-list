@@ -35,5 +35,6 @@ urlpatterns = [
     path('todo/<int:todo_pk>/delete', views.deletetodo, name="deletetodo"),
     path('testing/', views.testing, name="testing"),
     path('features/', views.features, name="features"),
+    path('dashboard/', views.dashboard, name="dashboard"),
 
 ]

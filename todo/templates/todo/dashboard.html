@@ -1,0 +1,16 @@
+{% extends "todo/base.html" %}
+{% load static %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="px-4 py-5 my-5 text-center">
+    <img class="d-block mx-auto mb-4" src="{% static 'todo/logo.png' %}" width="55" height="55">
+    <h1 class="display-5 fw-bold">Hello {{ user }}</h1>
+    <div class="col-md-6 mx-auto">
+        <p class="lead md-4">
+            Here lies your dashboard.
+        </p>
+    </div>
+</div>
+{% endblock %}}

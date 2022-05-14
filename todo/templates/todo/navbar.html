@@ -1,5 +1,5 @@
 {% load static %}
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+<nav class="navbar navbar-expand-md navbar-light bg-light">
   <div class="container">
     <a class="navbar-brand" id="navbar-text" href="{% url 'home' %}">
       <img src="{% static 'todo/clipboard.png' %}" alt="" width="25" height="25"
@@ -13,8 +13,8 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-md-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{% url 'home' %}"><i class="bi bi-house-door-fill"></i>
-            Home</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'dashboard' %}"><i class="bi bi-house-door-fill"></i>
+            Dashboard</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" aria-current="page" href="{% url 'createtodo' %}"><i
@@ -35,8 +35,7 @@
       </button>
 
       <!-- Modal -->
-      <div class="modal fade" id="logoutModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal animate__animated animate__jackInTheBox" id="logoutModal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-header">
@@ -73,8 +72,8 @@
           <a class="nav-link" aria-current="page" href="#">FAQ</a>
         </li>
       </ul>
-      <a class="btn btn-outline-light me-2" href="{% url 'loginuser' %}">Login</a>
-      <a class="btn btn-warning" href="{% url 'signupuser' %}">Sign-Up</a>
+      <a class="btn btn-outline-dark me-2" href="{% url 'loginuser' %}">Login</a>
+      <a class="btn btn-primary" href="{% url 'signupuser' %}">Sign-Up</a>
     </div>
     {% endif %}
 </nav>

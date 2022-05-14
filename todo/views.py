@@ -103,3 +103,6 @@ def testing(request):
 
 def features(request):
     return render(request, 'todo/features.html')
+
+def dashboard(request):
+    return render(request, 'todo/dashboard.html')
