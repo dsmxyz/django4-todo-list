@@ -98,9 +98,6 @@ def completedtodos(request):
     todos = Todo.objects.filter(user=request.user, datecompleted__isnull=False).order_by('-datecompleted')
     return render(request, 'todo/completedtodos.html', {'todos': todos})
 
-def testing(request):
-    return render(request, 'todo/testlogin.html')
-
 def features(request):
     return render(request, 'todo/features.html')
 
